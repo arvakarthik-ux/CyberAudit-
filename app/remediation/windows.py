@@ -38,7 +38,17 @@ class DefenderRemediation(BaseRemediation):
     def preview(self, evidence: dict) -> dict:
         return {"action": "Enable Microsoft Defender real-time monitoring.", "settings_changed": ["Defender DisableRealtimeMonitoring preference"], "requires_admin": True}
     def apply(self, evidence: dict) -> ActionResult:
-        result = _run("Set-MpPreference -DisableRealtimeMonitoring $false")
+        # A successful preference command is not enough: Tamper Protection, Group Policy,
+        # or another endpoint product can keep real-time protection disabled.
+        result = _run(
+            "$ErrorActionPreference='Stop'; "
+            "Set-MpPreference -DisableRealtimeMonitoring $false; "
+            "Start-Sleep -Seconds 2; "
+            "$status=Get-MpComputerStatus; "
+            "if (-not $status.RealTimeProtectionEnabled) { "
+            "Write-Error 'Microsoft Defender still reports real-time protection as disabled. It may be managed by Tamper Protection, Group Policy, or another antivirus product.'; exit 1 }; "
+            "Write-Output 'Microsoft Defender real-time protection is enabled and verified.'"
+        )
         result.backup_data = {"RealTimeProtectionEnabled": evidence.get("RealTimeProtectionEnabled")}
         return result
     def rollback(self, backup_data: dict) -> ActionResult:
