@@ -1,0 +1,51 @@
+{
+  "system": {
+    "node": "LAPTOP-TVEPGUJG",
+    "system": "Windows",
+    "release": "11",
+    "version": "10.0.26200",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "python_user": "arvak",
+    "hostname": "LAPTOP-TVEPGUJG",
+    "is_admin": false
+  },
+  "score": 40,
+  "findings": [
+    {
+      "id": "NET-445",
+      "title": "SMB-related port 445 is listening",
+      "severity": "MEDIUM",
+      "category": "Network",
+      "evidence": "Port 445 (pid 4) is listening",
+      "recommendation": "Ensure SMB is required and patched; consider limiting exposure."
+    },
+    {
+      "id": "NET-139",
+      "title": "SMB-related port 139 is listening",
+      "severity": "MEDIUM",
+      "category": "Network",
+      "evidence": "Port 139 (pid 4) is listening",
+      "recommendation": "Ensure SMB is required and patched; consider limiting exposure."
+    },
+    {
+      "id": "NET-139",
+      "title": "SMB-related port 139 is listening",
+      "severity": "MEDIUM",
+      "category": "Network",
+      "evidence": "Port 139 (pid 4) is listening",
+      "recommendation": "Ensure SMB is required and patched; consider limiting exposure."
+    },
+    {
+      "id": "NET-445",
+      "title": "SMB-related port 445 is listening",
+      "severity": "MEDIUM",
+      "category": "Network",
+      "evidence": "Port 445 (pid 4) is listening",
+      "recommendation": "Ensure SMB is required and patched; consider limiting exposure."
+    }
+  ],
+  "scan_id": "d24a0dc2-5b9d-474b-8151-e5877ac41838",
+  "timestamp": "2026-08-26T15:59:28.357665Z",
+  "hardware_probe": null
+}
