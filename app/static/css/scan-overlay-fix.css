@@ -1,0 +1,4 @@
+/* The browser's hidden attribute must win over the overlay's grid layout. */
+.scan-overlay[hidden] {
+  display: none !important;
+}
