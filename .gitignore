@@ -3,7 +3,7 @@
 cyberaudit.db
 __pycache__/
 *.pyc
-logs/
-backups/
-reports/
+/logs/
+/backups/
+/reports/
 .pytest_cache/
